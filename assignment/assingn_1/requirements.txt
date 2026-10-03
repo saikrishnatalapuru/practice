@@ -1,0 +1,34 @@
+Objective
+Create 3 EC2 instances using for_each and expose their details through Terraform outputs.
+Requirements
+Create a variable called instances.
+It should be a map
+Define 3 instances:
+app1
+app2
+app3
+Give each an instance type.
+Use for_each in your aws_instance resource.
+Do not copy-paste the EC2 resource three times.
+Use your existing AMI variable.
+Add tags so the EC2 names become:
+app1
+app2
+app3
+Create an output.tf that displays for each instance:
+Instance ID
+Public IP
+Instance name
+Run:
+terraform fmt
+terraform validate
+terraform plan
+terraform apply
+Verify the three instances in AWS.
+⭐ Bonus challenge
+Create the instances with different types:
+app1 → t3.micro
+app2 → t3.micro
+app3 → t3.small
+Then change only app3 to another instance type and run terraform plan.
+Observe exactly what Terraform wants to chang
