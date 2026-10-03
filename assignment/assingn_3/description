@@ -1,0 +1,4 @@
+create 3 resources ec2 instance using count 
+Use count when you need to create similar resources , for everything else use 	for_each
+
+ex: if you want to keep 5 similar ec2 instances behind LB , where names did not have much impact
