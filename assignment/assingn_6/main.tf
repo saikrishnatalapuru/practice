@@ -7,8 +7,11 @@ resource "aws_instance" "web-server" {
     instance_type = "t3.micro"
     tags = {
         Name = "web-server"
+        Owner = "Terraform"
     }
     lifecycle  {
-        create_before_destroy = true
+          ignore_changes = [
+    tags["Owner"]
+          ]
     }
 }
