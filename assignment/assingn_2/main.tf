@@ -11,5 +11,6 @@ resource "aws_instance" "example" {
 
     Name = each.key
     Env  = each.value.environment
+    Owner = each.value.owner
   }
 }
