@@ -1,5 +1,5 @@
 variable "instance_type" {
-    description = "Type of instane"
+    description = "Type of instanse"
     type = string
 }
 
