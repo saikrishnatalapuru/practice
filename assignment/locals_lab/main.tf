@@ -1,15 +1,22 @@
 locals {
-  app_name    = "payment"
-  environment = "dev"
-  owner       = "sre-team"
-
+  app_name      = "payment"
+  environment   = var.environment
+  owner         = "sre-team"
+  resource_name = "${local.app_name}-${local.environment}"
   common_tags = {
     Environment = local.environment
     Application = local.app_name
     Owner       = local.owner
-    Name        = "Devolpment"
+    Name        = local.resource_name
     CostCenter  = "CC1001"
   }
+  settings = {
+  environment = var.environment
+  owner = "Owner1"
+}
+
+safe_owner = try(local.settings.owner, "Owner2")
+
 }
 
 output "app_name" {
@@ -31,4 +38,5 @@ output "merged_tags" {
     local.common_tags,
     { Name = "Production" }
   )
-} 
+}
+
