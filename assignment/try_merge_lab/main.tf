@@ -19,6 +19,10 @@ locals {
       Owner      = "Production"
       CostCenter = "PROD900"
     }
+    stage = {
+      Owner      = "Staging-Team"
+      CostCenter = "STAGE500"
+    }
   }
 
   selected_tags = try(

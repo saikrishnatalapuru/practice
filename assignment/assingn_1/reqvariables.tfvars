@@ -5,3 +5,4 @@ instance_type = {
   app2     = "t3.small"
   app3    = "t8i.micro"
 }
+
