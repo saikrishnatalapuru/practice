@@ -1,13 +1,26 @@
+moved {
+  from = local_file.app[1]
+  to   = local_file.app["backend"]
+}
+
+moved {
+  from = local_file.app[2]
+  to   = local_file.app["database"]
+}
 locals {
-  applications = ["backend", "database"]
+  applications = toset(["backend", "database"])
 }
 
 resource "local_file" "app" {
-  count    = length(local.applications)
-  filename = "${path.module}/${local.applications[count.index]}.txt"
-  content  = "Application: ${local.applications[count.index]}"
+  for_each = local.applications
+
+  filename = "${path.module}/${each.key}.txt"
+  content  = "Application: ${each.key}"
 }
 
 output "app_filenames" {
-  value = local_file.app[*].filename
+  value = {
+    for app, file in local_file.app :
+    app => file.filename
+  }
 }
