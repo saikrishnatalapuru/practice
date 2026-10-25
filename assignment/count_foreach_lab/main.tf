@@ -7,8 +7,12 @@ moved {
   from = local_file.app[2]
   to   = local_file.app["database"]
 }
+moved {
+  from = local_file.app["backend"]
+  to   = local_file.app["api"]
+}
 locals {
-  applications = toset(["backend", "database"])
+  applications = toset(["database", "api"])
 }
 
 resource "local_file" "app" {
