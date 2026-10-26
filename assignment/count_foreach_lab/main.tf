@@ -12,7 +12,7 @@ moved {
   to   = local_file.app["api"]
 }
 locals {
-  applications = toset(["database", "api"])
+  applications = toset(["database"])
 }
 
 resource "local_file" "app" {
