@@ -1,9 +1,16 @@
-module "app_file" {
+module "app" {
   source   = "./modules/app_file"
-  app_name = "payment-api"
+  for_each = toset(["payment-api", "backend", "frontend"])
+
+  app_name = each.key
 }
 
-module "backend" {
-  source   = "./modules/app_file"
-  app_name = "backend"
+moved {
+  from = module.app_file
+  to   = module.app["payment-api"]
+}
+
+moved {
+  from = module.backend
+  to   = module.app["backend"]
 }
