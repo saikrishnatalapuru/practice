@@ -3,7 +3,7 @@ resource "local_file" "app" {
   content  = "Terraform remote state learning  Day2"
 }
 
-/*terraform {
+terraform {
   backend "s3" {
     bucket       = "saikrishna-terraform-state-223662763733"
     key          = "remote_state_lab/terraform.tfstate"
@@ -11,4 +11,8 @@ resource "local_file" "app" {
     encrypt      = true
     use_lockfile = true
   }
-}*/
+}
+
+resource "time_sleep" "lock_test" {
+  create_duration = "200s"
+}
